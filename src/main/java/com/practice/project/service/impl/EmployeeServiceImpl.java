@@ -43,9 +43,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employee.isEmpty()) {
             throw new EmployeeNotFoundException("Employee not found with Employee_Id : " + empId);
         } else {
-            employee.get().setFirstName(empDto.getFirstName());
+            employee.get().setFirstName(empDto.getFirstName()!=null ? empDto.getFirstName() : employee.get().getFirstName());
             employee.get().setLastName(empDto.getLastName()!=null ? empDto.getLastName() : employee.get().getLastName());
-            employee.get().setAge(empDto.getAge());
+            employee.get().setAge(empDto.getAge()!=null ? empDto.getAge() : employee.get().getAge());
             employee1 = repository.save(employee.get());
         }
         return employee1;
